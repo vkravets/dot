@@ -76,6 +76,11 @@ export PATH=$NVM_DIR:$PATH
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
+bindkey "^[b" backward-word
+bindkey "^[f" forward-word
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+
 # Case insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 zstyle ':completion:*' menu select
@@ -137,15 +142,15 @@ if zplug check "mollifier/anyframe"; then
   bindkey '^R' anyframe-widget-execute-history
   bindkey '^P' anyframe-widget-put-history
   bindkey '^G' anyframe-widget-checkout-git-branch
-  bindkey '^A' anyframe-widget-git-add
+  bindkey '^F' anyframe-widget-git-add
   bindkey '^K' anyframe-widget-kill
-  bindkey '^E' anyframe-widget-insert-git-branch
+  bindkey '^B' anyframe-widget-insert-git-branch
 fi
 
 
 if [[ -z "$IDEA_TERMINAL" ]]
 then
-	zplug "~/.zsh/powerlevel9k", from:local, as:theme 
+	zplug "~/.zsh/powerlevel9k", from:local, as:theme
 else
 	zplug "themes/risto" from:oh-my-zsh
 fi
@@ -159,10 +164,9 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load 
+zplug load
 
 
 if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 fi
-
