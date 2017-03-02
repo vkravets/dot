@@ -73,7 +73,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export NVM_DIR="$HOME/.nvm"
 export PATH=$NVM_DIR:$PATH
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
@@ -130,7 +130,7 @@ if zplug check "junegunn/fzf"; then
   bindkey -a ';'  fzf-directly-complete
 fi
 
-zplug "mollifier/anyframe", on:"junegunn/fzf-bin"
+zplug "vkravets/anyframe", on:"junegunn/fzf-bin"
 
 if zplug check "mollifier/anyframe"; then
   zstyle ":anyframe:selector:" use fzf
@@ -161,5 +161,5 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose 
+zplug load 
 
