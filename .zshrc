@@ -1,58 +1,16 @@
-export NVM_DIR="/Users/vkravets/.nvm"
+export PATH=/usr/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/vkravets/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 if [[ $1 == eval ]]
 then
 	"$@"
 	set --
 fi
 
-if [[ -z "$IDEA_TERMINAL" ]]
-then
-	ZSH_THEME="powerlevel9k/powerlevel9k"
-else
-	ZSH_THEME="risto"
-fi
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
 
 # powerlevel9k stuff
 POWERLEVEL9K_MODE='awesome-patched'
@@ -76,20 +34,10 @@ POWERLEVEL9K_VCS_GIT_ICON=''
 #POWERLEVEL9K_VCS_UNTRACKED_ICON='?'
 
 # for bundler plugin
-BUNDLED_COMMANDS=(rubocop)
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git github ruby rvm gem mvn osx docker bundler vundle httpie nvm thefuck)
-
-# User configuration
+BUNDLED_COMMANDS=(rubocop rake)
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -103,7 +51,6 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=vim
 export GIT_EDITOR=vim
-
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -123,4 +70,96 @@ export GIT_EDITOR=vim
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR="$HOME/.nvm"
+export PATH=$NVM_DIR:$PATH
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+# Case insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+
+ZPLUG_PROTOCOL=ssh
+
+# Check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+fi
+
+# Essential
+source ~/.zplug/init.zsh
+
+# Supports oh-my-zsh plugins and the like
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/github",   from:oh-my-zsh
+zplug "plugins/ruby",   from:oh-my-zsh
+zplug "plugins/rvm",   from:oh-my-zsh, defer:2
+zplug "plugins/gem",   from:oh-my-zsh
+zplug "plugins/mvn",   from:oh-my-zsh
+zplug "plugins/osx",   from:oh-my-zsh
+zplug "plugins/docker",   from:oh-my-zsh
+zplug "plugins/docker-compose",   from:oh-my-zsh
+zplug "plugins/brew",   from:oh-my-zsh
+zplug "plugins/cp",   from:oh-my-zsh
+zplug "plugins/httpie",   from:oh-my-zsh
+zplug "glidenote/hub-zsh-completion"
+zplug "zsh-users/zsh-completions"
+zplug "willghatch/zsh-cdr"
+
+zplug "junegunn/fzf-bin", \
+    from:gh-r, \
+    as:command, \
+    use:"*darwin*amd64*", \
+    rename-to:fzf
+
+zplug "junegunn/fzf", \
+    use:"shell/completion.zsh", \
+    on:"junegunn/fzf-bin"
+
+if zplug check "junegunn/fzf"; then
+  export FZF_COMPLETION_TRIGGER=';'
+  fzf-direct-completion() {
+    FZF_COMPLETION_TRIGGER='' fzf-completion
+  }
+  zle -N fzf-direct-completion
+  bindkey -a ';'  fzf-directly-complete
+fi
+
+zplug "mollifier/anyframe", on:"junegunn/fzf-bin"
+
+if zplug check "mollifier/anyframe"; then
+  zstyle ":anyframe:selector:" use fzf
+
+  bindkey '^\' anyframe-widget-cdr
+  bindkey '^R' anyframe-widget-execute-history
+  bindkey '^P' anyframe-widget-put-history
+  bindkey '^G' anyframe-widget-checkout-git-branch
+  bindkey '^A' anyframe-widget-git-add
+  bindkey '^K' anyframe-widget-kill
+  bindkey '^E' anyframe-widget-insert-git-branch
+fi
+
+
+if [[ -z "$IDEA_TERMINAL" ]]
+then
+	zplug "~/.zsh/powerlevel9k", from:local, as:theme 
+else
+	zplug "themes/risto" from:oh-my-zsh
+fi
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose 
 
