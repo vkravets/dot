@@ -116,6 +116,7 @@ zplug "lib/history",   from:oh-my-zsh
 zplug "glidenote/hub-zsh-completion"
 zplug "zsh-users/zsh-completions"
 zplug "willghatch/zsh-cdr"
+zplug "mgryszko/jvm"
 
 zplug "junegunn/fzf-bin", \
     from:gh-r, \
