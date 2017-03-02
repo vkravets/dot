@@ -74,6 +74,8 @@ export PATH=$NVM_DIR:$PATH
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use  # This loads nvm
 
 SAVEHIST=10000
+HISTSIZE=10000
+HISTCONTROL=ignoredups
 HISTFILE=~/.zsh_history
 
 bindkey "^[b" backward-word
@@ -110,6 +112,7 @@ zplug "plugins/docker-compose",   from:oh-my-zsh
 zplug "plugins/brew",   from:oh-my-zsh
 zplug "plugins/cp",   from:oh-my-zsh
 zplug "plugins/httpie",   from:oh-my-zsh
+zplug "lib/history",   from:oh-my-zsh
 zplug "glidenote/hub-zsh-completion"
 zplug "zsh-users/zsh-completions"
 zplug "willghatch/zsh-cdr"
@@ -131,6 +134,7 @@ if zplug check "junegunn/fzf"; then
   }
   zle -N fzf-direct-completion
   bindkey -a ';'  fzf-directly-complete
+  zplug "~/.zsh/fzf", from:local
 fi
 
 zplug "vkravets/anyframe", on:"junegunn/fzf-bin"
@@ -164,7 +168,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load
+zplug load --verbose
 
 
 if [[ $TERM_PROGRAM == "iTerm.app" ]]; then

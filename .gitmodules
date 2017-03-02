@@ -1,3 +1,6 @@
 [submodule ".zsh/powerlevel9k"]
 	path = .zsh/powerlevel9k
 	url = git@github.com:bhilburn/powerlevel9k.git
+[submodule "fonts"]
+	path = fonts
+	url = git@github.com:powerline/fonts.git
