@@ -4,3 +4,6 @@
 [submodule "fonts"]
 	path = fonts
 	url = git@github.com:powerline/fonts.git
+[submodule ".zsh/anyframe"]
+	path = .zsh/anyframe
+	url = git@github.com:vkravets/anyframe.git
