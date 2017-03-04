@@ -1042,6 +1042,8 @@
 	<real>509880127.61797702</real>
 	<key>OptionIsMetaForSpecialChars</key>
 	<false/>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -1077,6 +1079,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/vkravets/dot/iterm2</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -1093,6 +1097,10 @@
 	<false/>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>findIgnoreCase_iTerm</key>
+	<true/>
+	<key>findRegex_iTerm</key>
+	<false/>
 	<key>iTerm Version</key>
 	<string>3.0.14</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
