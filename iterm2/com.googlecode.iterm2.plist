@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AlternateMouseScroll</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -387,9 +389,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 375 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>243 326 937 465 0 0 1440 878 </string>
+	<string>253 470 918 381 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>218 161 935 627 0 0 1440 878 </string>
+	<string>205 78 935 627 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -426,16 +428,12 @@
 			</dict>
 			<key>Ansi 11 Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.29099729636550137</real>
-				<key>Color Space</key>
-				<string>Calibrated</string>
+				<real>0.31311613319999998</real>
 				<key>Green Component</key>
-				<real>0.48966663652153986</real>
+				<real>0.53968650100000004</real>
 				<key>Red Component</key>
-				<real>0.81008274361725252</real>
+				<real>0.8995583653</real>
 			</dict>
 			<key>Ansi 12 Color</key>
 			<dict>
@@ -484,16 +482,12 @@
 			</dict>
 			<key>Ansi 3 Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.33088179418704727</real>
-				<key>Color Space</key>
-				<string>Calibrated</string>
+				<real>0.36974489688873291</real>
 				<key>Green Component</key>
-				<real>0.62084173494665829</real>
+				<real>0.71015834808349609</real>
 				<key>Red Component</key>
-				<real>0.78089945416175888</real>
+				<real>0.89336264133453369</real>
 			</dict>
 			<key>Ansi 4 Color</key>
 			<dict>
@@ -1092,7 +1086,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-03-01T20:29:30Z</date>
+	<date>2017-03-03T07:41:18Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>
