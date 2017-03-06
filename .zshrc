@@ -186,7 +186,7 @@ if zplug check "vkravets/anyframe"; then
   #bindkey '^R' fzf-history-widget
 
   zstyle ":anyframe:selector:" use fzf
-  zstyle ":anyframe:selector:fzf:" command 'fzf --cycle --height=30% --tabstop=4 --color=dark --history-size=10000 --extended'
+  zstyle ":anyframe:selector:fzf:" command 'fzf --height=30% --tabstop=4 --color=dark --history-size=10000 --extended'
 
   bindkey '^\' anyframe-widget-cdr
   bindkey '^R' anyframe-widget-execute-history
