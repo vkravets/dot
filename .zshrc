@@ -37,7 +37,7 @@ POWERLEVEL9K_VCS_GIT_ICON=''
 #POWERLEVEL9K_VCS_UNTRACKED_ICON='?'
 
 # for bundler plugin
-BUNDLED_COMMANDS=(rubocop rake)
+BUNDLED_COMMANDS=(rake cap)
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export MANPATH="/usr/local/man:$MANPATH"
@@ -71,6 +71,7 @@ export GIT_EDITOR=vim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 export NVM_DIR="$HOME/.nvm"
 export PATH=$NVM_DIR:$PATH
@@ -103,12 +104,6 @@ fi
 # Essential
 source ~/.zplug/init.zsh
 
-if [[ -z "$IDEA_TERMINAL" ]]
-then
-	zplug "~/.zsh/powerlevel9k", from:local, as:theme
-else
-	zplug "themes/risto" from:oh-my-zsh
-fi
 
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/vi-mode", from:oh-my-zsh 
@@ -116,6 +111,7 @@ zplug "plugins/cp",   from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh
 zplug "plugins/github",   from:oh-my-zsh
 zplug "plugins/ruby",   from:oh-my-zsh
+zplug "plugins/bundler",   from:oh-my-zsh
 zplug "plugins/rvm",   from:oh-my-zsh, defer:2
 zplug "plugins/gem",   from:oh-my-zsh
 zplug "plugins/mvn",   from:oh-my-zsh
@@ -136,6 +132,11 @@ zplug "supercrabtree/k"
 zplug "marzocchi/zsh-notify"
 zplug "lukechilds/zsh-better-npm-completion", defer:3
 zplug "felixr/docker-zsh-completion"
+zplug 'b4b4r07/pkill.sh', as:command, use:'pkill.sh', rename-to:'pk'
+zplug "b4b4r07/httpstat", \
+    as:command, \
+    use:'(*).sh', \
+    rename-to:'$1'
 
 export ENHANCD_FILTER=fzf:fzy:peco
 zplug "b4b4r07/enhancd", use:init.sh
@@ -161,12 +162,25 @@ if zplug check "junegunn/fzf"; then
     FZF_COMPLETION_TRIGGER='' fzf-completion
   }
   zle -N fzf-direct-completion
+
   bindkey -a ';'  fzf-direct-completion
   zplug "~/.zsh/fzf", from:local
+
 fi
 
 zplug "vkravets/anyframe", on:"junegunn/fzf-bin"
 #zplug "~/.zsh/anyframe", from:local, on:"junegunn/fzf-bin"
+
+if zplug check "b4b4r07/pkill.sh"; then
+  export F='fzf --ansi'
+fi
+
+if [[ -z "$IDEA_TERMINAL" ]]
+then
+	zplug "~/.zsh/powerlevel9k", from:local, as:theme
+else
+	zplug "themes/robbyrussell", from:oh-my-zsh, as:theme, defer:0
+fi
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -177,7 +191,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load 
+zplug load
 
 if zplug check "vkravets/anyframe"; then
 #if zplug check "~/.zsh/anyframe"; then
@@ -220,3 +234,12 @@ if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
   zle -N zle-line-finish
   zle -N zle-keymap-select
 fi
+
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"

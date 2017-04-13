@@ -347,7 +347,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 6</string>
+	<string>1, 7</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/dot/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
@@ -393,9 +393,11 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 375 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>253 404 1018 447 0 0 1440 878 </string>
+	<string>347 589 958 433 0 0 1680 1028 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>205 78 935 627 0 0 1440 878 </string>
+	<string>101 322 1530 627 0 0 1680 1028 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -468,12 +470,16 @@
 			</dict>
 			<key>Ansi 15 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.41454979777336121</real>
+				<real>0.6096099093170364</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.38266518712043762</real>
+				<real>0.56690309187490839</real>
 				<key>Red Component</key>
-				<real>0.35304740071296692</real>
+				<real>0.52492019411103141</real>
 			</dict>
 			<key>Ansi 2 Color</key>
 			<dict>
@@ -591,7 +597,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>130</integer>
+			<integer>215</integer>
 			<key>Command</key>
 			<string>/bin/zsh</string>
 			<key>Cursor Boost</key>
@@ -951,7 +957,7 @@
 				<real>0.023</real>
 			</dict>
 			<key>Minimum Contrast</key>
-			<real>0.0</real>
+			<real>0.24779964398734178</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -962,6 +968,8 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>DroidSansMonoAwesome 12</string>
+			<key>Open Toolbelt</key>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1094,15 +1102,23 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-03-04T10:35:00Z</date>
+	<date>2017-04-12T12:41:33Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<false/>
+	<key>TabStyle</key>
+	<integer>1</integer>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1489782528</real>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
